@@ -1,0 +1,138 @@
+/* 新增美化样式 */
+.content-li.li2 {
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.carbox.li2-box {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.mes-board {
+    margin-top: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+#msgBoard {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#msgBoard li {
+    background: white;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 4px solid #4a90e2;
+}
+
+#msgBoard li:hover {
+    transform: translateX(5px);
+}
+
+#msgBoard h4 {
+    color: #2c3e50;
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#msgBoard h4::before {
+    content: "👤";
+    font-size: 0.9em;
+}
+
+#msgBoard small {
+    color: #95a5a6;
+    font-size: 0.85rem;
+}
+
+#msgBoard div {
+    color: #34495e;
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+.form-group {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+    padding: 0.8rem;
+}
+
+.form-control:focus {
+    border-color: #4a90e2;
+    box-shadow: none;
+}
+
+#sendBtn {
+    background: #4a90e2;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    transition: all 0.3s;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+#sendBtn:hover {
+    background: #357abd;
+    transform: translateY(-1px);
+}
+
+#msg {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+}
+
+/* 标题样式优化 */
+.content-li.li2 h3 {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+}
+
+.content-li.li2 h3 span:first-child {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.borderbotm {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #4a90e2;
+    border-radius: 2px;
+}
+
+.content-li.li2 h3 span:last-child {
+    font-size: 2.5rem;
+    color: rgba(74, 144, 226, 0.15);
+    font-weight: 700;
+}
