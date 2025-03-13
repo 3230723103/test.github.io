@@ -133,7 +133,7 @@ $('#minmenu').click(function () {
           clearInterval(timer)
         }
       }, 100);
-     
+
     }
   }
 
