@@ -66,6 +66,21 @@
   border-radius: 10px;
 }
 
+ .tiaozhuan{
+   text-decoration: none; /* 去除下划线 */
+   color: #333; /* 文字颜色 */
+   padding: 5px 5px; /* 内边距 */
+   border: 1px solid #333; /* 边框样式 */
+   border-radius: 4px; /* 边框圆角 */
+   background-color: #f6e2b8; /* 背景颜色 */
+   transition: background-color 0.3s ease-in-out; /* 过渡效果 */
+   cursor: pointer; /* 鼠标样式为手型 */
+   align-content: center;
+ }
+ .tiaozhuan:hover{
+   background-color: #a4ffd0;
+ }
+
 .text-block blockquote::after {
   margin: 0;
   width: 50px;
