@@ -114,11 +114,9 @@ $('#minmenu').click(function () {
     $('.menu_list').addClass('active')
   }
 })
-  
-  
 
-  
-  
+
+
   // loadding
   document.onreadystatechange = function () {
     if (document.readyState == 'complete') {

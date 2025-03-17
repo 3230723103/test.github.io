@@ -404,7 +404,39 @@ svg {
     font-weight: 300;
     vertical-align: middle;
 }
-
+.ruanjianfenxiang{
+  position: relative;
+  background-color: rgb(156, 212, 133);
+  border: none;
+  font-size: 18px;
+  color: #ffffff;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  transition-duration: 2s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 50px 50px 50px 50px;
+}
+ .ruanjianfenxiang::after{
+   content: '';
+   background: #d17a7a;
+   display: block;
+   position: absolute;
+   padding-top: 300%;
+   padding-left: 350%;
+   margin-left: -20px !important;
+   margin-top: -120%;
+   opacity: 0;
+   transition:all 0.8s;
+ }
+ .ruanjianfenxiang:active::after{
+   padding: 0;
+   margin: 0;
+   opacity: 1;
+   transition: 0s;
+ }
 
     /* 手机*/
     @media screen and (max-width: 550px) {
