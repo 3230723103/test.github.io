@@ -32,10 +32,7 @@ try {
     }
 
     // 返回插入的时间戳
-    echo json_encode([
-        "status" => "success",
-        "timestamp" => date('Y-m-d H:i:s')
-    ]);
+    header("Location:index.php");
 
 } catch (Exception $e) {
     http_response_code(400);

@@ -241,7 +241,7 @@
             </a>
           </div>
         </div>
-
+  <form action="save_message.php" method="post">
         <!-- 留言板 -->
         <div class="content-li li2">
           <h3>
@@ -257,67 +257,100 @@
               <!--发送留言-->
               <div class="form-group">
                 <p>
-                <input type="text" class="form-control" id="userName" placeholder="昵称">
+                <input type="text"  name="username" class="form-control" id="userName" placeholder="昵称">
                 </p>
                 <p>&nbsp;</p>
               </div>
               <div class="form-group">
-                <textarea class="form-control" rows="3" id="content" placeholder="欢迎留言ヾ(^▽^*)))"></textarea><br>
+                <textarea class="form-control" name="content" rows="3" id="content" placeholder="欢迎留言ヾ(^▽^*)))"></textarea><br>
                 <p>&nbsp;</p>
-                  <button class="btn-btn-default" id="sendBtn">提交</button>
-                &nbsp;&nbsp;&nbsp;
+                  <input class="btn-btn-default" name="submit" type="submit" value="提交">
+                
                 <span id="msg" style="color: red;"></span>
 
+  </form>
+				<div class="borderbotm"></div>
                 <!--留言列表-->
                 <div id="msgBoard" class="mes-board">
+
+                    <?php
+
+                    require 'config.php';
+
+                    try {
+                        $stmt = $conn->prepare("SELECT username, content, created_at FROM messages ORDER BY created_at DESC");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        $messages = [];
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+                            <hr>
+                            <b><?=$row['username']?>:</b><br>
+                            <b>留言内容：</b><?=$row['content']?><br>
+                            <?=$row['created_at']?><br>
+                            <hr>
+                     <?php
+
+                        }
+
+                    } catch (Exception $e) {
+                        http_response_code(500);
+                        echo json_encode([
+                            "error" => "无法加载留言: " . $e->getMessage()
+                        ]);
+                    }
+
+                    $conn->close();
+                    ?>
                 </div>
               </div>
             </div>
           </div>
-          <script>
-            // 发送留言
-            $("#sendBtn").click(function(){
-              //获取用户姓名
-              var  userName = $("#userName").val();
-              //判断非空
-              if(userName == null || userName.trim() == ""){
-                $("#msg").html("用户姓名不能为空！");
-                return;
-              }
-              //获取留言内容
-              var  content= $("#content").val();
 
-              //判断非空
-
-              if(content.trim() == ""){
-                $("#msg").html("请输入留言内容！");
-                return;
-              }
-
-              //留言数据
-
-              var  msg = "<li><h4>"+userName+"</h4><small>"+formatDate()+"</small>";
-              msg +="<div>"+content+"</div></li>";
-
-              //将留言内容追加到留言板中
-
-              $("#msgBoard").prepend(msg);
-              //清空内容与提示信息
-              $("#userName").val("");
-              $("#content").val("");
-              $("msg").val("");
-            });
-
-            //格式化时间
-            function formatDate(){
-              //获取系统当前时间
-              var  date = new  Date();
-              //获取年月日时分秒
-              var str = date.getFullYear()+"-"+(parseInt(date.getMonth())+1)+"-"+date.getDate();
-              str +" "+ date.getHours +":"+ date.getMinutes()+":"+date.getSeconds();
-              return  str;
-            }
-          </script>
+//           <script>
+//             // 发送留言
+//             $("#sendBtn").click(function(){
+//               //获取用户姓名
+//               var  userName = $("#userName").val();
+//               //判断非空
+//               if(userName == null || userName.trim() == ""){
+//                 $("#msg").html("用户姓名不能为空！");
+//                 return;
+//               }
+//               //获取留言内容
+//               var  content= $("#content").val();
+//
+//               //判断非空
+//
+//               if(content.trim() == ""){
+//                 $("#msg").html("请输入留言内容！");
+//                 return;
+//               }
+//
+//               //留言数据
+//
+//               var  msg = "<li><h4>"+userName+"</h4><small>"+formatDate()+"</small>";
+//               msg +="<div>"+content+"</div></li>";
+//
+//               //将留言内容追加到留言板中
+//
+//               $("#msgBoard").prepend(msg);
+//               //清空内容与提示信息
+//               $("#userName").val("");
+//               $("#content").val("");
+//               $("msg").val("");
+//             });
+//             //格式化时间
+//             function formatDate(){
+//               //获取系统当前时间
+//               var  date = new  Date();
+//               //获取年月日时分秒
+//               var str = date.getFullYear()+"-"+(parseInt(date.getMonth())+1)+"-"+date.getDate();
+//               str +" "+ date.getHours +":"+ date.getMinutes()+":"+date.getSeconds();
+//               return  str;
+//             }
+//           </script>
         </div>
 
         <!-- 项目分类-->
